@@ -1,0 +1,100 @@
+<div class="signup-form" id="clinic-form">
+    <button class="back-button" id="back-to-selection-clinic"><i class="fas fa-arrow-left"></i> Back</button>
+    <h2>Clinic Sign Up</h2>
+    
+    <form id="clinic-signup-form">
+        <div class="form-group">
+            <div class="input-icon">
+                <i class="fas fa-hospital"></i>
+                <input type="text" id="clinic-name" placeholder="Clinic Name" required>
+            </div>
+            <div class="error-message" id="clinic-name-error">Please enter a valid name</div>
+        </div>
+        
+        <div class="form-group">
+            <div class="input-icon">
+                <i class="fas fa-envelope"></i>
+                <input type="email" id="clinic-email" placeholder="Email Address" required>
+            </div>
+            <div class="error-message" id="clinic-email-error">Please enter a valid email address</div>
+        </div>
+        
+        <div class="form-group">
+            <div class="input-icon">
+                <i class="fas fa-lock"></i>
+                <input type="password" id="clinic-password" placeholder="Password" required>
+            </div>
+            <div class="error-message" id="clinic-password-error">Password must be at least 6 characters</div>
+        </div>
+        
+        <div class="form-group">
+            <div class="input-icon">
+                <i class="fas fa-phone"></i>
+                <input type="tel" id="clinic-tel" placeholder="Phone Number" required>
+            </div>
+            <div class="error-message" id="clinic-tel-error">Please enter a valid phone number</div>
+        </div>
+        
+        <div class="form-group">
+            <div class="input-icon">
+                <i class="fas fa-map-marker-alt"></i>
+                <input type="text" id="clinic-address" placeholder="Address" required>
+            </div>
+            <div class="error-message" id="clinic-address-error">Please enter a valid address</div>
+        </div>
+        
+        <div class="form-group">
+            <div class="input-icon working-days">
+                <i class="fas fa-calendar-week"></i>
+                <input type="text" id="clinic-working-days" placeholder="Working Days" readonly>
+            </div>
+            <div class="days-selection" id="clinic-days-selection">
+                <div class="day-checkbox">
+                    <input type="checkbox" id="clinic-monday" class="day-input">
+                    <label for="clinic-monday">Monday</label>
+                </div>
+                <div class="day-checkbox">
+                    <input type="checkbox" id="clinic-tuesday" class="day-input">
+                    <label for="clinic-tuesday">Tuesday</label>
+                </div>
+                <div class="day-checkbox">
+                    <input type="checkbox" id="clinic-wednesday" class="day-input">
+                    <label for="clinic-wednesday">Wednesday</label>
+                </div>
+                <div class="day-checkbox">
+                    <input type="checkbox" id="clinic-thursday" class="day-input">
+                    <label for="clinic-thursday">Thursday</label>
+                </div>
+                <div class="day-checkbox">
+                    <input type="checkbox" id="clinic-friday" class="day-input">
+                    <label for="clinic-friday">Friday</label>
+                </div>
+                <div class="day-checkbox">
+                    <input type="checkbox" id="clinic-saturday" class="day-input">
+                    <label for="clinic-saturday">Saturday</label>
+                </div>
+                <div class="day-checkbox">
+                    <input type="checkbox" id="clinic-sunday" class="day-input">
+                    <label for="clinic-sunday">Sunday</label>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-group hours-container">
+            <div class="half-width">
+                <label for="clinic-start-time">Start Work</label>
+                <input type="time" id="clinic-start-time" placeholder="Start Time" required>
+            </div>
+            <div class="half-width">
+                <label for="clinic-end-time">End Work</label>
+                <input type="time" id="clinic-end-time" placeholder="End Time" required>
+            </div>
+        </div>
+        
+        <button type="submit" class="signup-button">Create Account</button>
+        
+        <div class="login-link">
+            Already have an account? <a href="#" id="clinic-login-link">Log in</a>
+        </div>
+    </form>
+</div>

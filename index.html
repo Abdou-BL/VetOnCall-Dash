@@ -1,0 +1,378 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VetOnCall - Sign Up</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <!-- Add Firebase SDK -->
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-firestore.js" type="module"></script>
+    <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-storage.js" type="module"></script>
+    <!-- Add Cloudinary SDK -->
+    <script src="https://upload-widget.cloudinary.com/global/all.js" type="text/javascript"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="account-selection">
+            <img src="/logo.webp" alt="VetOnCall Logo" class="logo">
+            <h1>Choose Account Type</h1>
+            <p>Select the type of account you want to create</p>
+            
+            <div class="account-options">
+                <div class="account-card active" id="veterinarian-card">
+                    <div class="account-icon">
+                        <i class="fas fa-user-md"></i>
+                    </div>
+                    <h3>Veterinarian</h3>
+                    <p>Create an account as a veterinary professional</p>
+                </div>
+                
+                <div class="account-card" id="clinic-card">
+                    <div class="account-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h3>Clinic</h3>
+                    <p>Register your veterinary clinic or hospital</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="signup-form" id="veterinarian-form">
+            <button class="back-button" id="back-to-selection-vet"><i class="fas fa-arrow-left"></i> Back</button>
+            
+            <div class="split-layout">
+                <div class="form-description">
+                    <h2>Join Our Veterinary Network</h2>
+                    <div class="description-content">
+                        <p>Register as a veterinary professional with VetOnCall and connect with pet owners in your area.</p>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Set your own flexible work schedule</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Provide remote consultations and home visits</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Access our network of veterinary specialists</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Grow your practice and client base</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Receive real-time analytics and insights</span>
+                        </div>
+                        
+                        <div class="clinic-image">
+                            <i class="fas fa-user-md fa-5x"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-side">
+                    <h2>Veterinarian Sign Up</h2>
+                    <form id="vet-signup-form">
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <i class="fas fa-user"></i>
+                                <input type="text" id="vet-name" placeholder="Full Name" required>
+                            </div>
+                            <div class="error-message" id="vet-name-error">Please enter a valid name</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="vet-email" placeholder="Email Address" required>
+                            </div>
+                            <div class="error-message" id="vet-email-error">Please enter a valid email address</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="vet-password" placeholder="Password" required>
+                            </div>
+                            <div class="error-message" id="vet-password-error">Password must be at least 6 characters</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" id="vet-tel" placeholder="Phone Number" required>
+                            </div>
+                            <div class="error-message" id="vet-tel-error">Please enter a valid phone number</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" id="vet-address" placeholder="Address" required>
+                            </div>
+                            <div class="error-message" id="vet-address-error">Please enter a valid address</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <i class="fas fa-stethoscope"></i>
+                                <select id="vet-specialty" required>
+                                    <option value="">Select Specialty</option>
+                                    <option value="General Practice">General Practice</option>
+                                    <option value="Surgery">Surgery</option>
+                                    <option value="Dermatology">Dermatology</option>
+                                    <option value="Cardiology">Cardiology</option>
+                                    <option value="Neurology">Neurology</option>
+                                    <option value="Oncology">Oncology</option>
+                                    <option value="Emergency Care">Emergency Care</option>
+                                    <option value="Exotic Animals">Exotic Animals</option>
+                                </select>
+                            </div>
+                            <div class="error-message" id="vet-specialty-error">Please select a specialty</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-icon working-days">
+                                <i class="fas fa-calendar-week"></i>
+                                <input type="text" id="vet-working-days" placeholder="Working Days" readonly>
+                            </div>
+                            <div class="days-selection" id="vet-days-selection">
+                                <div class="day-checkbox">
+                                    <input type="checkbox" id="vet-monday" class="day-input">
+                                    <label for="vet-monday">Monday</label>
+                                </div>
+                                <div class="day-checkbox">
+                                    <input type="checkbox" id="vet-tuesday" class="day-input">
+                                    <label for="vet-tuesday">Tuesday</label>
+                                </div>
+                                <div class="day-checkbox">
+                                    <input type="checkbox" id="vet-wednesday" class="day-input">
+                                    <label for="vet-wednesday">Wednesday</label>
+                                </div>
+                                <div class="day-checkbox">
+                                    <input type="checkbox" id="vet-thursday" class="day-input">
+                                    <label for="vet-thursday">Thursday</label>
+                                </div>
+                                <div class="day-checkbox">
+                                    <input type="checkbox" id="vet-friday" class="day-input">
+                                    <label for="vet-friday">Friday</label>
+                                </div>
+                                <div class="day-checkbox">
+                                    <input type="checkbox" id="vet-saturday" class="day-input">
+                                    <label for="vet-saturday">Saturday</label>
+                                </div>
+                                <div class="day-checkbox">
+                                    <input type="checkbox" id="vet-sunday" class="day-input">
+                                    <label for="vet-sunday">Sunday</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group hours-container">
+                            <div class="half-width">
+                                <label for="vet-start-time">Start Work</label>
+                                <input type="time" id="vet-start-time" placeholder="Start Time" required>
+                            </div>
+                            <div class="half-width">
+                                <label for="vet-end-time">End Work</label>
+                                <input type="time" id="vet-end-time" placeholder="End Time" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="certification-upload">
+                                <label for="vet-certification">
+                                    <i class="fas fa-file-medical"></i>
+                                    <span>Upload Certification</span>
+                                </label>
+                                <input type="file" id="vet-certification" accept=".pdf,.jpg,.jpeg,.png" hidden>
+                                <div id="certification-name"></div>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="signup-button">Create Account</button>
+                        
+                        <div class="login-link">
+                            Already have an account? <a href="#" id="vet-login-link">Log in</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="split-form-container" id="clinic-form">
+            <button class="back-button" id="back-to-selection-clinic"><i class="fas fa-arrow-left"></i> Back</button>
+            
+            <div class="split-layout">
+                <div class="form-description">
+                    <h2>Join Our Veterinary Network</h2>
+                    <div class="description-content">
+                        <p>Register your clinic with VetOnCall and connect with pet owners in your area.</p>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Increase your clinic's visibility and reach</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Manage appointments and patient records efficiently</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Access our network of veterinary specialists</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Simplify billing and payment processing</span>
+                        </div>
+                        <div class="benefit-item">
+                            <i class="fas fa-check-circle"></i>
+                            <span>Receive real-time analytics and insights</span>
+                        </div>
+                        
+                        <div class="clinic-image">
+                            <i class="fas fa-hospital-user fa-5x"></i>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="form-side">
+                    <h2>Clinic Sign Up</h2>
+                    <form id="clinic-signup-form">
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <i class="fas fa-hospital"></i>
+                                <input type="text" id="clinic-name" placeholder="Clinic Name" required>
+                            </div>
+                            <div class="error-message" id="clinic-name-error">Please enter a valid name</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <i class="fas fa-envelope"></i>
+                                <input type="email" id="clinic-email" placeholder="Email Address" required>
+                            </div>
+                            <div class="error-message" id="clinic-email-error">Please enter a valid email address</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <i class="fas fa-lock"></i>
+                                <input type="password" id="clinic-password" placeholder="Password" required>
+                            </div>
+                            <div class="error-message" id="clinic-password-error">Password must be at least 6 characters</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <i class="fas fa-phone"></i>
+                                <input type="tel" id="clinic-tel" placeholder="Phone Number" required>
+                            </div>
+                            <div class="error-message" id="clinic-tel-error">Please enter a valid phone number</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-icon">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <input type="text" id="clinic-address" placeholder="Address" required>
+                            </div>
+                            <div class="error-message" id="clinic-address-error">Please enter a valid address</div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <div class="input-icon working-days">
+                                <i class="fas fa-calendar-week"></i>
+                                <input type="text" id="clinic-working-days" placeholder="Working Days" readonly>
+                            </div>
+                            <div class="days-selection" id="clinic-days-selection">
+                                <div class="day-checkbox">
+                                    <input type="checkbox" id="clinic-monday" class="day-input">
+                                    <label for="clinic-monday">Monday</label>
+                                </div>
+                                <div class="day-checkbox">
+                                    <input type="checkbox" id="clinic-tuesday" class="day-input">
+                                    <label for="clinic-tuesday">Tuesday</label>
+                                </div>
+                                <div class="day-checkbox">
+                                    <input type="checkbox" id="clinic-wednesday" class="day-input">
+                                    <label for="clinic-wednesday">Wednesday</label>
+                                </div>
+                                <div class="day-checkbox">
+                                    <input type="checkbox" id="clinic-thursday" class="day-input">
+                                    <label for="clinic-thursday">Thursday</label>
+                                </div>
+                                <div class="day-checkbox">
+                                    <input type="checkbox" id="clinic-friday" class="day-input">
+                                    <label for="clinic-friday">Friday</label>
+                                </div>
+                                <div class="day-checkbox">
+                                    <input type="checkbox" id="clinic-saturday" class="day-input">
+                                    <label for="clinic-saturday">Saturday</label>
+                                </div>
+                                <div class="day-checkbox">
+                                    <input type="checkbox" id="clinic-sunday" class="day-input">
+                                    <label for="clinic-sunday">Sunday</label>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group hours-container">
+                            <div class="half-width">
+                                <label for="clinic-start-time">Start Work</label>
+                                <input type="time" id="clinic-start-time" placeholder="Start Time" required>
+                            </div>
+                            <div class="half-width">
+                                <label for="clinic-end-time">End Work</label>
+                                <input type="time" id="clinic-end-time" placeholder="End Time" required>
+                            </div>
+                        </div>
+                        
+                        <button type="submit" class="signup-button">Create Account</button>
+                        
+                        <div class="login-link">
+                            Already have an account? <a href="#" id="clinic-login-link">Log in</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+        
+        <div class="login-form" id="login-form">
+            <button class="back-button" id="back-to-selection-login"><i class="fas fa-arrow-left"></i> Back</button>
+            <h2>Log In</h2>
+            
+            <form id="login-form-element">
+                <div class="form-group">
+                    <div class="input-icon">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="login-email" placeholder="Email Address" required>
+                    </div>
+                </div>
+                
+                <div class="form-group">
+                    <div class="input-icon">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="login-password" placeholder="Password" required>
+                    </div>
+                </div>
+                
+                <button type="submit" class="login-button">Log In</button>
+                
+                <div class="forgot-password">
+                    <a href="#" id="forgot-password-link">Forgot Password?</a>
+                </div>
+                
+                <div class="signup-link">
+                    Don't have an account? <a href="#" id="back-to-signup">Sign Up</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script type="module" src="app.js"></script>
+</body>
+</html>
